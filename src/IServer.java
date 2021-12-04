@@ -2,5 +2,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 public interface IServer extends Remote {
-    public String helloWord() throws RemoteException;
+
+    public String processChoice(String choice) throws RemoteException;
 }

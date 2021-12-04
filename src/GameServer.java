@@ -3,25 +3,15 @@ import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.server.UnicastRemoteObject;
 
-public class Server extends UnicastRemoteObject implements IServer {
-
-    public Server() throws RemoteException {
-
-    }
-
-    @Override
-    public String helloWord() throws RemoteException {
-        return "hello world";
-    }
+public class GameServer {
 
     public static void main(String[] args) {
         try {
-            IServer hello = new Server();
+            IServer hello = new ServerImpl();
             LocateRegistry.createRegistry(8888);
 
-            Naming.bind("rmi://localhost:8888/RHello", hello);
+            Naming.bind("rmi://localhost:8888/server", hello);
 
             System.out.println("Server Ready");
 
